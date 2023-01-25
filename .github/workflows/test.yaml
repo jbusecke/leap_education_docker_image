@@ -14,6 +14,8 @@ jobs:
     - name: update jupyter dependencies with repo2docker
       uses: jupyterhub/repo2docker-action@master
       with:
+        DOCKER_USERNAME: ${{ secrets.QUAY_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.QUAY_PASSWORD }}
         NO_PUSH: "true"
         DOCKER_REGISTRY: "quay.io"
         IMAGE_NAME: jbusecke/leap-edu-image
