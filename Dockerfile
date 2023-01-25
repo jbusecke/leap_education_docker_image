@@ -17,10 +17,14 @@ USER ${NB_USER}
 
 COPY environment.yml /tmp/
 
-RUN mamba env update --name ${CONDA_ENV} -f /tmp/environment.yml
+# FIXME: This is not very elegant, but can I just nuke the existing environment and build it from scratch?
+RUN mamba remove --name ${CONDA_ENV} --all
+RUN mamba env create --name ${CONDA_ENV} -f /tmp/environment.yml
 
-# Remove nb_conda_kernels from the env for now
-RUN mamba remove -n ${CONDA_ENV} nb_conda_kernels
+# RUN mamba env update --name ${CONDA_ENV} -f /tmp/environment.yml
+
+# Remove nb_conda_kernels from the env for now (should not be necessary if I first nuke the environment?)
+# RUN mamba remove -n ${CONDA_ENV} nb_conda_kernels
 
 # wonder how much of the other stuff from https://github.com/2i2c-org/coessing-image/blob/55adca9b2caa1c886a3340ff9668fea3785727cc/Dockerfile
 # we need here. Test bare bones for now.
