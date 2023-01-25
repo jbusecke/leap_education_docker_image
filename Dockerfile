@@ -1,25 +1,25 @@
 # From https://github.com/2i2c-org/coessing-image/blob/55adca9b2caa1c886a3340ff9668fea3785727cc/Dockerfile
-FROM pangeo/base-notebook:latest
-#they used a fixed tag, but I think we do not want that?
+# FROM pangeo/base-notebook:latest
+# they used a fixed tag, but I think we do not want that?
 
-USER root
-ENV DEBIAN_FRONTEND=noninteractive
-ENV PATH ${NB_PYTHON_PREFIX}/bin:$PATH
+#USER root
+#ENV DEBIAN_FRONTEND=noninteractive
+#ENV PATH ${NB_PYTHON_PREFIX}/bin:$PATH
 
 # FIXME: Somehow this does not recognize the apt.txt. For now lets install git manually
-RUN apt update && apt install -y git && rm -rf /var/lib/apt/lists/*
+#RUN apt update && apt install -y git && rm -rf /var/lib/apt/lists/*
 
 # Needed for apt-key to work
-RUN apt-get update -qq --yes > /dev/null && \
-    apt-get install --yes -qq gnupg2 > /dev/null
+#RUN apt-get update -qq --yes > /dev/null && \
+#    apt-get install --yes -qq gnupg2 > /dev/null
 
-USER ${NB_USER}
+#USER ${NB_USER}
 
-COPY environment.yml /tmp/
+#COPY environment.yml /tmp/
 
 # FIXME: This is not very elegant, but can I just nuke the existing environment and build it from scratch?
-RUN mamba remove --name ${CONDA_ENV} --all
-RUN mamba env create --name ${CONDA_ENV} -f /tmp/environment.yml
+#RUN mamba remove --name ${CONDA_ENV} --all
+#RUN mamba env create --name ${CONDA_ENV} -f /tmp/environment.yml
 
 # RUN mamba env update --name ${CONDA_ENV} -f /tmp/environment.yml
 
