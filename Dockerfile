@@ -1,5 +1,5 @@
 # From https://github.com/2i2c-org/coessing-image/blob/55adca9b2caa1c886a3340ff9668fea3785727cc/Dockerfile
-FROM pangeo/pangeo-notebook:latest
+FROM pangeo/base-notebook:latest
 #they used a fixed tag, but I think we do not want that?
 
 USER root
