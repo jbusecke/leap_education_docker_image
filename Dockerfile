@@ -6,6 +6,9 @@ USER root
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PATH ${NB_PYTHON_PREFIX}/bin:$PATH
 
+# FIXME: Somehow this does not recognize the apt.txt. For now lets install git manually
+RUN apt update && apt install -y git && rm -rf /var/lib/apt/lists/*
+
 # Needed for apt-key to work
 RUN apt-get update -qq --yes > /dev/null && \
     apt-get install --yes -qq gnupg2 > /dev/null
