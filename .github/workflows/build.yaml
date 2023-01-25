@@ -36,9 +36,7 @@ jobs:
         # so all contents put in /home/jovyan are lost. This particularly prevents any 'start' script from
         # working, as it is needed in runtime.
         REPO_DIR: /srv/repo
-        #
-        # Uncomment and modify the following line with your image name, otherwise no push will happen
-        # IMAGE_NAME: "<quay-username>/<repository-name>"
+        IMAGE_NAME: jbusecke/leap-edu-image
 
     # Lets us monitor disks getting full as images get bigger over time
     - name: Show how much disk space is left
