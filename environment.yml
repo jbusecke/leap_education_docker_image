@@ -1,6 +1,16 @@
 channels: 
   - conda-forge
 dependencies:
+  # from template here: https://github.com/2i2c-org/hub-user-image-template
+  - jupyter_contrib_nbextensions==0.5.1
+  # Required until https://github.com/jupyterhub/repo2docker/pull/1196 is merged
+  - jupyterhub-singleuser>=3.0,<4.0
+  # Set default python version to 3.10 - repo2docker sets it to 3.7 instead by default,
+  # which can limit us to older package versions
+  - python=3.10
+  # Everyone wants to use nbgitpuller for everything, so let's do that
+  - nbgitpuller=1.1.*
+  # Add other packages here
   - fortran-compiler
   - c-compiler
   - python<3.11
