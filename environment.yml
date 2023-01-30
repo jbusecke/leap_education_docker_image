@@ -19,6 +19,8 @@ dependencies:
   - pandas
   - matplotlib
   - cbsyst
+  - colorcet
+  - seaborn
   - pip
   - pip:
     - git+https://github.com/atmtools/climt@rrtmg-only
